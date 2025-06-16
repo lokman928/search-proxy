@@ -1,0 +1,6 @@
+[server]
+port = 8080
+
+[brave]
+baseurl = "https://api.search.brave.com"
+apikey = "<your api key here>"
