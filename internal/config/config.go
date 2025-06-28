@@ -16,8 +16,8 @@ type ProxyConfig struct {
 }
 
 type BraveConfig struct {
-	BaseUrl string
-	ApiKey  string
+	BaseUrl string `toml:"base_url"`
+	ApiKey  string `toml:"api_key"`
 }
 
 func NewConfig() *Config {
