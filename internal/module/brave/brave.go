@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
+	"github.com/lokman928/search-proxy/internal/common"
 	"github.com/lokman928/search-proxy/internal/config"
 	"github.com/lokman928/search-proxy/internal/module/brave/internal"
 	"go.uber.org/fx"
@@ -19,8 +20,9 @@ func NewBraveModule(lc fx.Lifecycle, cfg *config.Config) *BraveModule {
 	braveCfg := cfg.Brave
 
 	serviceCfg := &internal.ServiceConfig{
-		BaseUrl: braveCfg.BaseUrl,
-		ApiKey:  braveCfg.ApiKey,
+		BaseUrl:     braveCfg.BaseUrl,
+		ApiKey:      braveCfg.ApiKey,
+		RateLimiter: common.NewTokenRateLimiter(&braveCfg.RateLimit),
 	}
 	service := internal.NewService(serviceCfg)
 

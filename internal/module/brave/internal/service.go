@@ -12,23 +12,32 @@ import (
 )
 
 type ServiceConfig struct {
-	BaseUrl string
-	ApiKey  string
+	BaseUrl     string
+	ApiKey      string
+	RateLimiter *common.TokenRateLimiter
 }
 
 type Service struct {
-	baseUrl string
-	apiKey  string
+	baseUrl     string
+	apiKey      string
+	ratelimiter *common.TokenRateLimiter
 }
 
 func NewService(cfg *ServiceConfig) *Service {
 	return &Service{
-		baseUrl: cfg.BaseUrl,
-		apiKey:  cfg.ApiKey,
+		baseUrl:     cfg.BaseUrl,
+		apiKey:      cfg.ApiKey,
+		ratelimiter: cfg.RateLimiter,
 	}
 }
 
 func (s *Service) Search(ctx context.Context, query string, count int) ([]common.SearchResult, error) {
+	token, getTokenErr := s.ratelimiter.GetTokenWithContext(ctx)
+	if getTokenErr != nil {
+		return nil, fmt.Errorf("failed to get rate limiter token: %w", getTokenErr)
+	}
+	defer s.ratelimiter.Release(token)
+
 	resp, err := s.sendRequestToBrave("/res/v1/web/search", map[string]string{
 		"q":     query,
 		"count": fmt.Sprintf("%d", count),
