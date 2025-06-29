@@ -1,9 +1,6 @@
 package brave
 
 import (
-	"context"
-	"fmt"
-
 	"github.com/gin-gonic/gin"
 	"github.com/lokman928/search-proxy/internal/common"
 	"github.com/lokman928/search-proxy/internal/config"
@@ -27,17 +24,6 @@ func NewBraveModule(lc fx.Lifecycle, cfg *config.Config) *BraveModule {
 	service := internal.NewService(serviceCfg)
 
 	controller := internal.NewController(service)
-
-	lc.Append(fx.Hook{
-		OnStart: func(ctx context.Context) error {
-			fmt.Println("Initializing Brave module...")
-			return nil
-		},
-		OnStop: func(ctx context.Context) error {
-			fmt.Println("Stopping Brave module...")
-			return nil
-		},
-	})
 
 	return &BraveModule{
 		Service:    service,
