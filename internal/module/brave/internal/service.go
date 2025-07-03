@@ -9,18 +9,19 @@ import (
 
 	"github.com/bytedance/sonic"
 	"github.com/lokman928/search-proxy/internal/common"
+	"github.com/lokman928/search-proxy/internal/common/ratelimiter"
 )
 
 type ServiceConfig struct {
 	BaseUrl     string
 	ApiKey      string
-	RateLimiter *common.TokenRateLimiter
+	RateLimiter *ratelimiter.TokenRateLimiter
 }
 
 type Service struct {
 	baseUrl     string
 	apiKey      string
-	ratelimiter *common.TokenRateLimiter
+	ratelimiter *ratelimiter.TokenRateLimiter
 }
 
 func NewService(cfg *ServiceConfig) *Service {
