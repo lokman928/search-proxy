@@ -1,1 +1,5 @@
+# Ignore config files
 config.toml
+
+# Go build output
+bin
