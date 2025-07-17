@@ -63,9 +63,7 @@ func (s *Service) Search(ctx context.Context, query string, count int) ([]common
 	results := make([]common.SearchResult, 0, len(rawResults))
 	for _, rawResult := range rawResults {
 		url, _ := rawResult.Get("url").String()
-
 		title, _ := rawResult.Get("title").String()
-
 		snippet, _ := rawResult.Get("description").String()
 
 		results = append(results, common.SearchResult{
