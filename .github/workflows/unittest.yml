@@ -3,6 +3,7 @@ name: Unittest
 on:
   pull_request:
     branches: [ "*" ]
+  workflow_dispatch:
 
 jobs:
   unittest:
