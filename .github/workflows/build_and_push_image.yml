@@ -24,7 +24,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Log in to the Container registry
-      uses: docker/login-action
+      uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
       with:
         registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
@@ -38,7 +38,7 @@ jobs:
 
     - name: Build and push Docker image
       id: push
-      uses: docker/build-push-action
+      uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
       with:
         context: .
         push: true
