@@ -1,0 +1,9 @@
+[server]
+port = 8080
+
+[brave]
+base_url = "https://api.search.brave.com"
+api_key = "<your api key here>"
+rate_limit.enable = true
+rate_limit.cooldown_time = 1
+rate_limit.max_concurrency = 1

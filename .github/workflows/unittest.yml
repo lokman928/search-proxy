@@ -1,0 +1,30 @@
+name: Unittest
+
+on:
+  pull_request:
+    branches: [ "*" ]
+  workflow_dispatch:
+
+jobs:
+  unittest:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.23'
+        cache: true
+
+    - name: Install go packages
+      run: go mod download
+
+    - name: Install Ginkgo
+      run: go install github.com/onsi/ginkgo/v2/ginkgo@latest
+
+    - name: Run tests
+      run: make unittest

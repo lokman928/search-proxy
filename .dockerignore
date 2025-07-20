@@ -1,0 +1,37 @@
+# Git
+.git
+.gitignore
+
+# Docker
+dockerfile
+.dockerignore
+
+# Build artifacts
+bin/
+
+# Configuration
+config.toml
+
+# Development and documentation
+README.md
+*.md
+mise.toml
+
+# Go specific
+*.test
+*.out
+*.prof
+
+# Test files
+*_test.go
+*_suite_test.go
+
+# Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+Thumbs.db
