@@ -6,8 +6,8 @@ import (
 )
 
 type ILogger interface {
-	WithField(string, any) *Logger
-	WithFields(map[string]any) *Logger
+	WithField(string, any) ILogger
+	WithFields(map[string]any) ILogger
 	Debug(msg string)
 	Info(msg string)
 	Warn(msg string)
@@ -55,12 +55,12 @@ func (l *Logger) GetZapLogger() *zap.Logger {
 }
 
 // WithField creates a new Logger with an additional field.
-func (l *Logger) WithField(key string, value any) *Logger {
+func (l *Logger) WithField(key string, value any) ILogger {
 	return l.WithFields(map[string]any{key: value})
 }
 
 // WithFields creates a new Logger with additional fields.
-func (l *Logger) WithFields(fields map[string]any) *Logger {
+func (l *Logger) WithFields(fields map[string]any) ILogger {
 	// Prepare zap fields for core logger (typed).
 	zapFields := make([]zap.Field, 0, len(fields))
 	for k, v := range fields {

@@ -3,3 +3,6 @@ config.toml
 
 # Go build output
 bin
+
+# Mockery output
+**/mock_*.go

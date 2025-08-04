@@ -9,3 +9,7 @@ run:
 .PHONY: build
 build:
 	@go build -o bin/proxy ./cmd/proxy/main.go
+
+.PHONY: mock
+mock:
+	@mockery
