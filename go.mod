@@ -5,8 +5,8 @@ go 1.23.0
 toolchain go1.23.9
 
 require (
-	github.com/bytedance/sonic v1.13.3
 	github.com/gin-gonic/gin v1.10.1
+	github.com/go-resty/resty/v2 v2.16.5
 	github.com/onsi/ginkgo/v2 v2.23.4
 	github.com/onsi/gomega v1.36.3
 	github.com/pelletier/go-toml/v2 v2.2.2
@@ -16,6 +16,7 @@ require (
 )
 
 require (
+	github.com/bytedance/sonic v1.13.3 // indirect
 	github.com/bytedance/sonic/loader v0.2.4 // indirect
 	github.com/cloudwego/base64x v0.1.5 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect

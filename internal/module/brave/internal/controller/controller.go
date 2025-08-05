@@ -1,16 +1,18 @@
-package internal
+package controller
 
 import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+
+	"github.com/lokman928/search-proxy/internal/module/brave/internal/service"
 )
 
 type Controller struct {
-	service *Service
+	service *service.Service
 }
 
-func NewController(service *Service) *Controller {
+func NewController(service *service.Service) *Controller {
 	return &Controller{
 		service: service,
 	}
